@@ -13,3 +13,6 @@ if __name__ == "__main__":
     }
 
     nn = NeuralNet(layers_definition)
+    for sample in training_data:
+        nn.feed_forward(sample)
+        print(nn.error)
