@@ -4,11 +4,14 @@ from random import shuffle, choices
 
 
 class Board:
-    def __init__(self):
+    def __init__(self, moves):
         self.board = np.zeros([2, 3, 3])
         self.winner = 0
 
-        self.play_game()
+        if moves:
+            self.play_game(moves)
+        else:
+            self.play_game(self.generate_moves())
 
         self.array = self.board.flatten()
         self.truth = np.zeros(3)
@@ -18,8 +21,8 @@ class Board:
         shuffle(moves)
         return moves
 
-    def play_game(self):
-        for player, move in enumerate(self.generate_moves()):
+    def play_game(self, moves):
+        for player, move in enumerate(moves):
             self.board[player % 2][move] = 1
             if self.game_has_winner(self.state()):
                 break
