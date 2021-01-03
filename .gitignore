@@ -1,2 +1,5 @@
 __pycache__/
 *.db
+build/
+dist/
+t3_jlo_unofficial.egg-info/
